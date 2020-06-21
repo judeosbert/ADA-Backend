@@ -1,0 +1,447 @@
+2020-06-20 18:54:52.007455 | INFO | Generating Gradle File | port-logger
+2020-06-20 18:54:52.597624 | INFO | Generated Gradle File 
+ apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+
+    signingConfigs {
+        release {
+            storeFile file("../releaseKey.jks")
+            storePassword "1234567890"
+            keyAlias "key0"
+            keyPassword "1234567890"
+        }
+    }
+    defaultConfig {
+        applicationId "labs.kleptomaniac.myapplication"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    //Will insert dependency in next section
+
+implementation 'com.github.AraujoJordan:ExcuseMe:0.9.5'
+
+    //You should see the library here
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+ | port-logger
+2020-06-20 18:54:52.598034 | INFO | Starting build process. | port-logger
+2020-06-20 18:54:52.598153 | INFO | Starting cleaning process | port-logger
+2020-06-20 18:55:07.900129 | INFO | /Users/klepto/IdeaProjects/size_checker/lib/base_app/0850de6f-f295-4f75-8025-166f7142708c/app/build/outputs/apk/release/app-release.apk | port-logger
+2020-06-20 18:55:08.059410 | INFO | PostgreSQL connecting, dart_app@localhost:5432/dependency_database. | aqueduct
+2020-06-20 18:55:08.154969 | INFO | Package Size inserted for com.github.AraujoJordan:ExcuseMe:0.9.5 | port-logger
+2020-06-20 18:55:08.155574 | INFO | Deleting /Users/klepto/IdeaProjects/size_checker/lib/base_app/0850de6f-f295-4f75-8025-166f7142708c/ | port-logger
+2020-06-20 19:09:50.769700 | INFO | Generating Gradle File | port-logger
+2020-06-20 19:09:51.392550 | INFO | Generated Gradle File 
+ apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+
+    signingConfigs {
+        release {
+            storeFile file("../releaseKey.jks")
+            storePassword "1234567890"
+            keyAlias "key0"
+            keyPassword "1234567890"
+        }
+    }
+    defaultConfig {
+        applicationId "labs.kleptomaniac.myapplication"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    //Will insert dependency in next section
+
+implementation 'com.greedygame.sdkx:core:0.0.69'
+
+    //You should see the library here
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+ | port-logger
+2020-06-20 19:09:51.393015 | INFO | Starting build process. | port-logger
+2020-06-20 19:09:51.393207 | INFO | Starting cleaning process | port-logger
+2020-06-20 19:10:16.682256 | INFO | /Users/klepto/IdeaProjects/size_checker/lib/base_app/0dfd97f5-c5e3-4686-8f48-80f18af32d72/app/build/outputs/apk/release/app-release.apk | port-logger
+2020-06-20 19:10:16.690563 | INFO | PostgreSQL connecting, dart_app@localhost:5432/dependency_database. | aqueduct
+2020-06-20 19:10:16.714374 | INFO | Package Size inserted for com.greedygame.sdkx:core:0.0.69 | port-logger
+2020-06-20 19:10:16.714762 | INFO | Deleting /Users/klepto/IdeaProjects/size_checker/lib/base_app/0dfd97f5-c5e3-4686-8f48-80f18af32d72/ | port-logger
+2020-06-20 19:12:11.311416 | INFO | Generating Gradle File | port-logger
+2020-06-20 19:12:11.758575 | INFO | Generated Gradle File 
+ apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+
+    signingConfigs {
+        release {
+            storeFile file("../releaseKey.jks")
+            storePassword "1234567890"
+            keyAlias "key0"
+            keyPassword "1234567890"
+        }
+    }
+    defaultConfig {
+        applicationId "labs.kleptomaniac.myapplication"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    //Will insert dependency in next section
+
+implementation 'com.greedygame:core:9.0.0'
+
+    //You should see the library here
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+ | port-logger
+2020-06-20 19:12:11.759440 | INFO | Starting build process. | port-logger
+2020-06-20 19:12:11.760094 | INFO | Starting cleaning process | port-logger
+2020-06-20 19:12:20.817503 | INFO | /Users/klepto/IdeaProjects/size_checker/lib/base_app/a3ff3d7b-b044-4be7-9d17-8a62286f881e/app/build/outputs/apk/release/app-release.apk | port-logger
+2020-06-20 19:12:20.833052 | INFO | PostgreSQL connecting, dart_app@localhost:5432/dependency_database. | aqueduct
+2020-06-20 19:12:20.852355 | INFO | Deleting /Users/klepto/IdeaProjects/size_checker/lib/base_app/a3ff3d7b-b044-4be7-9d17-8a62286f881e/ | port-logger
+2020-06-20 19:15:00.521725 | INFO | Generating Gradle File | port-logger
+2020-06-20 19:15:01.078107 | INFO | Generated Gradle File 
+ apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+
+    signingConfigs {
+        release {
+            storeFile file("../releaseKey.jks")
+            storePassword "1234567890"
+            keyAlias "key0"
+            keyPassword "1234567890"
+        }
+    }
+    defaultConfig {
+        applicationId "labs.kleptomaniac.myapplication"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    //Will insert dependency in next section
+
+implementation 'androidx.palette:palette:1.0.0'
+
+    //You should see the library here
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+ | port-logger
+2020-06-20 19:15:01.079085 | INFO | Starting build process. | port-logger
+2020-06-20 19:15:01.079649 | INFO | Starting cleaning process | port-logger
+2020-06-20 19:15:10.619043 | INFO | /Users/klepto/IdeaProjects/size_checker/lib/base_app/f21a5a97-b2f7-42bb-82f8-d4b363759c72/app/build/outputs/apk/release/app-release.apk | port-logger
+2020-06-20 19:15:10.625900 | INFO | PostgreSQL connecting, dart_app@localhost:5432/dependency_database. | aqueduct
+2020-06-20 19:15:10.640525 | INFO | Package Size inserted for androidx.palette:palette:1.0.0 | port-logger
+2020-06-20 19:15:10.640980 | INFO | Deleting /Users/klepto/IdeaProjects/size_checker/lib/base_app/f21a5a97-b2f7-42bb-82f8-d4b363759c72/ | port-logger
+2020-06-20 19:15:30.562050 | INFO | Generating Gradle File | port-logger
+2020-06-20 19:15:30.987346 | INFO | Generated Gradle File 
+ apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+
+    signingConfigs {
+        release {
+            storeFile file("../releaseKey.jks")
+            storePassword "1234567890"
+            keyAlias "key0"
+            keyPassword "1234567890"
+        }
+    }
+    defaultConfig {
+        applicationId "labs.kleptomaniac.myapplication"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    //Will insert dependency in next section
+
+implementation 'com.squareup.moshi:moshi:1.9.2'
+
+    //You should see the library here
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+ | port-logger
+2020-06-20 19:15:30.988086 | INFO | Starting build process. | port-logger
+2020-06-20 19:15:30.988563 | INFO | Starting cleaning process | port-logger
+2020-06-20 19:15:45.045008 | INFO | /Users/klepto/IdeaProjects/size_checker/lib/base_app/ebe64f13-361b-44d1-8ce3-383d9a45644a/app/build/outputs/apk/release/app-release.apk | port-logger
+2020-06-20 19:15:45.051033 | INFO | PostgreSQL connecting, dart_app@localhost:5432/dependency_database. | aqueduct
+2020-06-20 19:15:45.069749 | INFO | Package Size inserted for com.squareup.moshi:moshi:1.9.2 | port-logger
+2020-06-20 19:15:45.070463 | INFO | Deleting /Users/klepto/IdeaProjects/size_checker/lib/base_app/ebe64f13-361b-44d1-8ce3-383d9a45644a/ | port-logger
+2020-06-20 19:16:58.850232 | INFO | Generating Gradle File | port-logger
+2020-06-20 19:16:59.297537 | INFO | Generated Gradle File 
+ apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+
+    signingConfigs {
+        release {
+            storeFile file("../releaseKey.jks")
+            storePassword "1234567890"
+            keyAlias "key0"
+            keyPassword "1234567890"
+        }
+    }
+    defaultConfig {
+        applicationId "labs.kleptomaniac.myapplication"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    //Will insert dependency in next section
+
+implementation 'com.squareup.moshi:moshi-adapters:1.9.2'
+
+    //You should see the library here
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+ | port-logger
+2020-06-20 19:16:59.298521 | INFO | Starting build process. | port-logger
+2020-06-20 19:16:59.299180 | INFO | Starting cleaning process | port-logger
+2020-06-20 19:17:09.286039 | INFO | /Users/klepto/IdeaProjects/size_checker/lib/base_app/a9b537d0-cd4c-4d9c-b494-e8d8b843733c/app/build/outputs/apk/release/app-release.apk | port-logger
+2020-06-20 19:17:09.292526 | INFO | PostgreSQL connecting, dart_app@localhost:5432/dependency_database. | aqueduct
+2020-06-20 19:17:09.314332 | INFO | Package Size inserted for com.squareup.moshi:moshi-adapters:1.9.2 | port-logger
+2020-06-20 19:17:09.315185 | INFO | Deleting /Users/klepto/IdeaProjects/size_checker/lib/base_app/a9b537d0-cd4c-4d9c-b494-e8d8b843733c/ | port-logger
+2020-06-20 19:17:40.244271 | INFO | Generating Gradle File | port-logger
+2020-06-20 19:17:40.660765 | INFO | Generated Gradle File 
+ apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+
+    signingConfigs {
+        release {
+            storeFile file("../releaseKey.jks")
+            storePassword "1234567890"
+            keyAlias "key0"
+            keyPassword "1234567890"
+        }
+    }
+    defaultConfig {
+        applicationId "labs.kleptomaniac.myapplication"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    //Will insert dependency in next section
+
+implementation 'com.google.android.gms:play-services-ads:19.1.0'
+
+    //You should see the library here
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+ | port-logger
+2020-06-20 19:17:40.662146 | INFO | Starting build process. | port-logger
+2020-06-20 19:17:40.662984 | INFO | Starting cleaning process | port-logger
+2020-06-20 19:18:02.101743 | INFO | /Users/klepto/IdeaProjects/size_checker/lib/base_app/014ef142-d6b7-4093-bed7-df9813119a25/app/build/outputs/apk/release/app-release.apk | port-logger
+2020-06-20 19:18:02.113220 | INFO | PostgreSQL connecting, dart_app@localhost:5432/dependency_database. | aqueduct
+2020-06-20 19:18:02.140907 | INFO | Package Size inserted for com.google.android.gms:play-services-ads:19.1.0 | port-logger
+2020-06-20 19:18:02.141941 | INFO | Deleting /Users/klepto/IdeaProjects/size_checker/lib/base_app/014ef142-d6b7-4093-bed7-df9813119a25/ | port-logger
+2020-06-20 19:19:06.708305 | INFO | Generating Gradle File | port-logger
+2020-06-20 19:19:07.216339 | INFO | Generated Gradle File 
+ apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+
+    signingConfigs {
+        release {
+            storeFile file("../releaseKey.jks")
+            storePassword "1234567890"
+            keyAlias "key0"
+            keyPassword "1234567890"
+        }
+    }
+    defaultConfig {
+        applicationId "labs.kleptomaniac.myapplication"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    //Will insert dependency in next section
+
+implementation 'com.squareup.moshi:moshi-kotlin:1.9.3'
+
+    //You should see the library here
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+ | port-logger
+2020-06-20 19:19:07.217496 | INFO | Starting build process. | port-logger
+2020-06-20 19:19:07.218191 | INFO | Starting cleaning process | port-logger
+2020-06-20 19:19:25.097856 | INFO | /Users/klepto/IdeaProjects/size_checker/lib/base_app/3aaa6ef2-9486-427d-b9e3-9402fff3f5c1/app/build/outputs/apk/release/app-release.apk | port-logger
+2020-06-20 19:19:25.104118 | INFO | PostgreSQL connecting, dart_app@localhost:5432/dependency_database. | aqueduct
+2020-06-20 19:19:25.122195 | INFO | Package Size inserted for com.squareup.moshi:moshi-kotlin:1.9.3 | port-logger
+2020-06-20 19:19:25.123114 | INFO | Deleting /Users/klepto/IdeaProjects/size_checker/lib/base_app/3aaa6ef2-9486-427d-b9e3-9402fff3f5c1/ | port-logger

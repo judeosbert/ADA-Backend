@@ -1,0 +1,56 @@
+2020-06-21 15:05:56.010937 | INFO | Generating Gradle File | port-logger
+2020-06-21 15:05:56.618599 | INFO | Generated Gradle File 
+ apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+
+    signingConfigs {
+        release {
+            storeFile file("../releaseKey.jks")
+            storePassword "1234567890"
+            keyAlias "key0"
+            keyPassword "1234567890"
+        }
+    }
+    defaultConfig {
+        applicationId "labs.kleptomaniac.myapplication"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    //Will insert dependency in next section
+
+implementation 'com.github.AraujoJordan:ExcuseMe:0.9.5'
+
+    //You should see the library here
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+ | port-logger
+2020-06-21 15:05:56.619106 | INFO | Starting build process. | port-logger
+2020-06-21 15:05:56.619235 | INFO | Starting cleaning process | port-logger
+2020-06-21 15:06:11.635544 | INFO | /Users/klepto/IdeaProjects/size_checker/lib/base_app/bd836e1c-fd8b-4990-a743-5f80280de438/app/build/outputs/apk/release/app-release.apk | port-logger
+2020-06-21 15:06:11.822576 | INFO | PostgreSQL connecting, dart_app@localhost:5432/dependency_database. | aqueduct
+2020-06-21 15:06:11.955560 | INFO | Package Size inserted for com.github.AraujoJordan:ExcuseMe:0.9.5 | port-logger
+2020-06-21 15:06:11.956374 | INFO | Deleting /Users/klepto/IdeaProjects/size_checker/lib/base_app/bd836e1c-fd8b-4990-a743-5f80280de438/ | port-logger
