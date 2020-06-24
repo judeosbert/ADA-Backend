@@ -30,7 +30,7 @@ class SizeCheckerChannel extends ApplicationChannel {
     });
     final dataModel = ManagedDataModel.fromCurrentMirrorSystem();
     final store = PostgreSQLPersistentStore.fromConnectionInfo(
-        "dart_app", "dart", "localhost", 5432, "dependency_database");
+        "lsvyktxeqsxocg", "ac983d1dd12c3ddfc83e473a508004f731ae365c304b4607e54a25e9f7656870", "ec2-54-88-130-244.compute-1.amazonaws.com", 5432, "dar4p2arohkqkn");
     context = ManagedContext(dataModel, store);
     await Executor().warmUp(log: true);
   }
