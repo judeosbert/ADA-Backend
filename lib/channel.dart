@@ -22,20 +22,25 @@ class SizeCheckerChannel extends ApplicationChannel {
   @override
   Future prepare() async {
     final File file = File("logs/app/app_logs.log");
-    if(!file.existsSync())
-      file.createSync();
+    if (!file.existsSync()) file.createSync();
     logger.onRecord.listen((rec) {
-      file.writeAsStringSync("${rec.time} | ${rec.level} | ${rec.message} | ${rec.loggerName}\n", mode: FileMode.append);
+      file.writeAsStringSync(
+          "${rec.time} | ${rec.level} | ${rec.message} | ${rec.loggerName}\n",
+          mode: FileMode.append);
       print("$rec ${rec.error ?? ""} ${rec.stackTrace ?? ""}");
     });
     final dataModel = ManagedDataModel.fromCurrentMirrorSystem();
     final store = PostgreSQLPersistentStore.fromConnectionInfo(
-        "lsvyktxeqsxocg", "ac983d1dd12c3ddfc83e473a508004f731ae365c304b4607e54a25e9f7656870", "ec2-54-88-130-244.compute-1.amazonaws.com", 5432, "dar4p2arohkqkn");
+        "dyjhfpucpuebxd",
+        "6d906ec077068d0befdbed06ee29451f8304f7d1257a1daa4f407a329094ee3f",
+        "ec2-35-173-94-156.compute-1.amazonaws.com",
+        5432,
+        "dc75auna9ogreb");
     context = ManagedContext(dataModel, store);
     await Executor().warmUp(log: true);
   }
 
-  /// Construct the request channel.
+  /// Construct the request channel.dart
   ///
   /// Return an instance of some [Controller] that will be the initial receiver
   /// of all [Request]s.
