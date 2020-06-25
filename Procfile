@@ -1,2 +1,2 @@
-release: /app/dart-sdk/bin/pub global activate aqueduct && /app/dart-sdk/bin/pub global run aqueduct:aqueduct db upgrade --connect $HEROKU_POSTGRESQL_COPPER_URL
-web: /app/dart-sdk/bin/pub global activate aqueduct && /app/dart-sdk/bin/pub global run aqueduct:aqueduct serve --port $PORT --config-path heroku.yaml
+release: /app/dart-sdk/bin/pub global activate aqueduct && aqueduct db upgrade --connect $HEROKU_POSTGRESQL_COPPER_URL
+web: /app/dart-sdk/bin/pub global activate aqueduct && aqueduct serve --port $PORT --config-path heroku.yaml
