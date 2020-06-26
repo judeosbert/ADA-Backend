@@ -31,11 +31,11 @@ class SizeCheckerChannel extends ApplicationChannel {
     });
     final dataModel = ManagedDataModel.fromCurrentMirrorSystem();
     final store = PostgreSQLPersistentStore.fromConnectionInfo(
-        "dyjhfpucpuebxd",
-        "6d906ec077068d0befdbed06ee29451f8304f7d1257a1daa4f407a329094ee3f",
-        "ec2-35-173-94-156.compute-1.amazonaws.com",
+        "db-rider",
+        "db-rider@mamoth1",
+        "localhost",
         5432,
-        "dc75auna9ogreb");
+        "size-registry");
     context = ManagedContext(dataModel, store);
     await Executor().warmUp(log: true);
   }
