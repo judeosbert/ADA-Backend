@@ -23,7 +23,7 @@ class SizeCheckerChannel extends ApplicationChannel {
   Future prepare() async {
     final File file = File("app-logs/app/app_logs.log");
     if (!file.existsSync())
-      file.createSync();
+      file.createSync(recursive: true);
     logger.onRecord.listen((rec) {
       file.writeAsStringSync(
           "${rec.time} | ${rec.level} | ${rec.message} | ${rec.loggerName}\n",
