@@ -21,8 +21,9 @@ class SizeCheckerChannel extends ApplicationChannel {
 
   @override
   Future prepare() async {
-    final File file = File("logs/app/app_logs.log");
-    if (!file.existsSync()) file.createSync();
+    final File file = File("app-logs/app/app_logs.log");
+    if (!file.existsSync())
+      file.createSync();
     logger.onRecord.listen((rec) {
       file.writeAsStringSync(
           "${rec.time} | ${rec.level} | ${rec.message} | ${rec.loggerName}\n",
@@ -31,11 +32,11 @@ class SizeCheckerChannel extends ApplicationChannel {
     });
     final dataModel = ManagedDataModel.fromCurrentMirrorSystem();
     final store = PostgreSQLPersistentStore.fromConnectionInfo(
-        "db-rider",
-        "db-rider@mamoth1",
+        "rider",
+        "rider_mamoth1",
         "localhost",
         5432,
-        "size-registry");
+        "rider");
     context = ManagedContext(dataModel, store);
     await Executor().warmUp(log: true);
   }
