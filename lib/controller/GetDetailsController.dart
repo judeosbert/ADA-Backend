@@ -103,7 +103,11 @@ Future<void> _startProcess(PortData portData) async {
   Future<void> insertData(int size, {bool isSuccess = false}) async {
     final dataModel = ManagedDataModel.fromCurrentMirrorSystem();
     final store = PostgreSQLPersistentStore.fromConnectionInfo(
-        "dart_app", "dart", "localhost", 5432, "dependency_database");
+        "rider",
+        "rider_mamoth1",
+        "localhost",
+        5432,
+        "rider");
     final context = ManagedContext(dataModel, store);
 
     final insertSizeQuery = Query<Dependency>(context)
