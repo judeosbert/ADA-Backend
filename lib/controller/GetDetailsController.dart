@@ -4,6 +4,7 @@ import 'dart:isolate';
 
 import 'package:io/io.dart';
 import 'package:aqueduct/aqueduct.dart';
+import 'package:size_checker/AppConfiguration.dart';
 import 'package:size_checker/models/Dependency.dart';
 import 'package:size_checker/models/PackageInfo.dart';
 import 'package:size_checker/models/PortData.dart';
@@ -101,13 +102,14 @@ Future<void> _startProcess(PortData portData) async {
   await stdout.addStream(releaseResult.stderr);
 
   Future<void> insertData(int size, {bool isSuccess = false}) async {
+    final AppConfiguration appConfiguration = AppConfiguration("config.yaml");
     final dataModel = ManagedDataModel.fromCurrentMirrorSystem();
     final store = PostgreSQLPersistentStore.fromConnectionInfo(
-        "rider",
-        "rider_mamoth1",
-        "localhost",
-        5432,
-        "rider");
+        appConfiguration.database.username,
+        appConfiguration.database.password,
+        appConfiguration.database.host,
+        appConfiguration.database.port,
+        appConfiguration.database.databaseName);
     final context = ManagedContext(dataModel, store);
 
     final insertSizeQuery = Query<Dependency>(context)
