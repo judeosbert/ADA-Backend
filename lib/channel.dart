@@ -1,4 +1,6 @@
+import 'package:size_checker/AppConfiguration.dart';
 import 'package:size_checker/controller/GetDetailsController.dart';
+import 'package:size_checker/controller/PurgeAllController.dart';
 import 'package:worker_manager/worker_manager.dart';
 
 import 'controller/GetTokenStatusController.dart';
@@ -30,13 +32,14 @@ class SizeCheckerChannel extends ApplicationChannel {
           mode: FileMode.append);
       print("$rec ${rec.error ?? ""} ${rec.stackTrace ?? ""}");
     });
+    final config = AppConfiguration(options.configurationFilePath);
     final dataModel = ManagedDataModel.fromCurrentMirrorSystem();
     final store = PostgreSQLPersistentStore.fromConnectionInfo(
-        "rider",
-        "rider_mamoth1",
-        "localhost",
-        5432,
-        "rider");
+        config.database.username,
+        config.database.password,
+        config.database.host,
+        config.database.port,
+        config.database.databaseName);
     context = ManagedContext(dataModel, store);
     await Executor().warmUp(log: true);
   }
@@ -59,7 +62,11 @@ class SizeCheckerChannel extends ApplicationChannel {
     router
         .route("/status/:token")
         .link(() => GetTokenStatusController(context));
+    router
+        .route("/purge/all")
+        .link(() => PurgeAllController(context));
 
     return router;
   }
 }
+
