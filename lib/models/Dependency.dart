@@ -7,7 +7,7 @@ class Dependency extends ManagedObject<_Dependency> implements _Dependency {
           "module": module,
           "version": version,
           "size": sizeInBytes,
-          "lastUpdate": lastUpdate
+          "lastUpdate": lastUpdate,
         }
       };
 }
@@ -27,6 +27,8 @@ class _Dependency {
   String pingToken;
 
   DateTime lastUpdate;
+
+  DateTime lastAccess;
 
   bool isSuccess;
 }

@@ -4,6 +4,7 @@ import 'package:size_checker/controller/PurgeAllController.dart';
 import 'package:worker_manager/worker_manager.dart';
 
 import 'controller/GetTokenStatusController.dart';
+import 'controller/RecentSearchesController.dart';
 import 'size_checker.dart';
 
 /// This type initializes an application.
@@ -62,6 +63,9 @@ class SizeCheckerChannel extends ApplicationChannel {
     router
         .route("/status/:token")
         .link(() => GetTokenStatusController(context));
+    router
+        .route("/recent")
+        .link(() => RecentSearchesController(context));
     router
         .route("/purge/all")
         .link(() => PurgeAllController(context));

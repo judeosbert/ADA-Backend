@@ -30,6 +30,7 @@ class GetDetailsController extends ResourceController {
 
       final Dependency dependency = await query.fetchOne();
       if (dependency != null) {
+        await _updateLastAccessTime(dependency);
         return Response.ok(dependency);
       }
 
@@ -44,6 +45,14 @@ class GetDetailsController extends ResourceController {
       logger.log(Level.SEVERE, e.toString());
       return Response.serverError();
     }
+  }
+
+  Future<void> _updateLastAccessTime(Dependency dependency) async {
+    final updateLastAccessQuery = Query<Dependency>(context)
+        ..values.lastAccess = DateTime.now()
+        ..where((dep) => dep.id)
+        .equalTo(dependency.id);
+    await updateLastAccessQuery.update();
   }
 
   Future<void> _scheduleBackgroundJob(
@@ -119,7 +128,8 @@ Future<void> _startProcess(PortData portData) async {
       ..values.lastUpdate = DateTime.now()
       ..values.pingToken = token
       ..values.isSuccess = isSuccess
-      ..values.sizeInBytes = size;
+      ..values.sizeInBytes = size
+      ..values.lastAccess = DateTime.now();
 
     await insertSizeQuery.insert();
   }
