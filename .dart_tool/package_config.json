@@ -38,12 +38,6 @@
       "languageVersion": "2.0"
     },
     {
-      "name": "buffer",
-      "rootUri": "file:///Users/klepto/.pub-cache/hosted/pub.dartlang.org/buffer-1.0.6",
-      "packageUri": "lib/",
-      "languageVersion": "2.0"
-    },
-    {
       "name": "charcode",
       "rootUri": "file:///Users/klepto/.pub-cache/hosted/pub.dartlang.org/charcode-1.1.3",
       "packageUri": "lib/",
@@ -225,9 +219,9 @@
     },
     {
       "name": "postgres",
-      "rootUri": "file:///Users/klepto/.pub-cache/hosted/pub.dartlang.org/postgres-2.1.1",
+      "rootUri": "file:///Users/klepto/.pub-cache/hosted/pub.dartlang.org/postgres-1.0.2",
       "packageUri": "lib/",
-      "languageVersion": "2.2"
+      "languageVersion": "2.0"
     },
     {
       "name": "process_run",
@@ -386,7 +380,7 @@
       "languageVersion": "2.2"
     }
   ],
-  "generated": "2020-06-25T14:22:01.417071Z",
+  "generated": "2020-06-26T16:04:46.018812Z",
   "generator": "pub",
   "generatorVersion": "2.7.1"
 }

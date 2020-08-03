@@ -9,6 +9,7 @@ class RecentSearchesController extends ResourceController {
   Future<Response> getRecentSearches() async{
     try{
       final query = Query<Dependency>(_context)
+      ..where((dep) => dep.sizeInBytes).greaterThan(0)
         ..sortBy((dep) => dep.lastAccess, QuerySortOrder.descending);
       query.fetchLimit = 5;
       final recentDependencies = await query.fetch();
