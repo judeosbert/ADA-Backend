@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:io';
-import 'dart:isolate';
 
 import 'package:io/io.dart';
 import 'package:aqueduct/aqueduct.dart';
@@ -17,11 +16,13 @@ class GetDetailsController extends ResourceController {
 
   final ManagedContext context;
 
-  @Operation.get('packageName')
+  @Operation.post('packageName')
   Future<Response> getLibrarySize(
       @Bind.path("packageName") String packageName) async {
     try {
-      final PackageInfo packageInfo = PackageInfo.from(packageName);
+      final Map<String, dynamic> bodyMap = await request.body.decode();
+      final String repo = bodyMap["repo"].toString();
+      final PackageInfo packageInfo = PackageInfo.from(packageName,repo);
 
       final Query<Dependency> query = Query<Dependency>(context)
         ..where((dep) => dep.domain).equalTo(packageInfo.domain)
@@ -39,7 +40,7 @@ class GetDetailsController extends ResourceController {
       final String token = Uuid().v4();
       logger.log(
           Level.INFO, "Starting background processing and returning token");
-      await _scheduleBackgroundJob(token, packageInfo.completePackage);
+      await _scheduleBackgroundJob(token, packageInfo.completePackage,packageInfo.repo);
       return Response.ok({"token": token});
     } catch (e) {
       logger.log(Level.SEVERE, e.toString());
@@ -56,8 +57,8 @@ class GetDetailsController extends ResourceController {
   }
 
   Future<void> _scheduleBackgroundJob(
-      String token, String completePackageName) async {
-    final PortData portData = PortData(completePackageName, token);
+      String token, String completePackageName, String repo) async {
+    final PortData portData = PortData(completePackageName, token,repo);
     Executor().execute(arg1: portData, fun1: _startProcess);
   }
 }
@@ -76,12 +77,28 @@ Future<void> _startProcess(PortData portData) async {
   final PackageInfo packageInfo = portData.packageInfo;
   logger.log(Level.INFO, "Generating Gradle File");
   final implementationLine = "implementation '${packageInfo.completePackage}'";
+  String projectGradleFileContent = "";
   String gradleFileContent = "";
   final FileDirs fileDirs = FileDirs(token);
   final tempDirectory = Directory(fileDirs.tempBaseApplicationPath);
   tempDirectory.createSync(recursive: true);
 
   copyPathSync(FileDirs.baseApplicationDirectory.path, tempDirectory.path);
+
+  //Project Gradle
+  final projectGradleHeadFile = File(fileDirs.projectGradleFileHeadPath);
+  final projectGradleTailFile = File(fileDirs.projectGradleFileTailPath);
+  final projectGradleFile = File(fileDirs.projectGradleFilePath);
+  projectGradleFileContent = projectGradleHeadFile.readAsStringSync();
+  projectGradleFileContent += "\n";
+  projectGradleFileContent += portData.repo;
+  projectGradleFileContent += "\n";
+  projectGradleFileContent += projectGradleTailFile.readAsStringSync();
+  projectGradleFile.writeAsStringSync(projectGradleFileContent);
+
+  logger.log(Level.INFO, "Generated Project Gradle File \n $projectGradleFileContent");
+
+  //App Gradle
   final gradleHeadFile = File(fileDirs.gradleFileHeadPath);
   final gradleTailFile = File(fileDirs.gradleFileTailPath);
   final gradleFile = File(fileDirs.gradleFilePath);

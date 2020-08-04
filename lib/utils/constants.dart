@@ -7,6 +7,9 @@ class FileDirs {
     gradleFilePath = tempBaseApplicationPath+"app/build.gradle";
     gradleFileHeadPath = tempBaseApplicationPath+"app/gradle_build_head";
     gradleFileTailPath = tempBaseApplicationPath+"app/gradle_build_tail";
+    projectGradleFilePath = tempBaseApplicationPath+"build.gradle";
+    projectGradleFileHeadPath = tempBaseApplicationPath+"gradle_build_head";
+    projectGradleFileTailPath = tempBaseApplicationPath+"gradle_build_tail";
 
   }
 
@@ -22,6 +25,8 @@ class FileDirs {
   String gradleFilePath = "";
   String gradleFileHeadPath = "";
   String gradleFileTailPath = "";
-
+  String projectGradleFilePath = "";
+  String projectGradleFileHeadPath = "";
+  String projectGradleFileTailPath = "";
 
 }

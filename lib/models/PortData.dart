@@ -4,7 +4,7 @@ import 'PackageInfo.dart';
 
 
 class PortData{
-  PortData(this.completePackage,this.token);
+  PortData(this.completePackage,this.token,this.repo);
 
   PortData.fromJson(String first) {
       print("Converting object $first");
@@ -15,8 +15,9 @@ class PortData{
 
   String completePackage;
   String token;
+  String repo;
 
-  PackageInfo get packageInfo => PackageInfo.from(completePackage);
+  PackageInfo get packageInfo => PackageInfo.from(completePackage,repo);
 
 
   @override

@@ -2,11 +2,12 @@ import 'package:size_checker/utils/DbUtils.dart';
 
 class PackageInfo{
 
-  PackageInfo.from(String completePackageName){
+  PackageInfo.from(String completePackageName,String repo){
     final TriValues<String> triValues = DbUtils.getPackageDetailsFrom(completePackageName);
     domain = triValues.first;
     module = triValues.second;
     version = triValues.third;
+    this.repo = repo;
   }
 
   Map toJson() =>
@@ -22,6 +23,6 @@ class PackageInfo{
   String domain;
   String module;
   String version;
-
+  String repo;
 
 }
