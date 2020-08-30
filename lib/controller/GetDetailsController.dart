@@ -5,6 +5,7 @@ import 'package:io/io.dart';
 import 'package:aqueduct/aqueduct.dart';
 import 'package:size_checker/AppConfiguration.dart';
 import 'package:size_checker/models/Dependency.dart';
+import 'package:size_checker/models/FailedDependency.dart';
 import 'package:size_checker/models/PackageInfo.dart';
 import 'package:size_checker/models/PortData.dart';
 import 'package:size_checker/utils/constants.dart';
@@ -137,18 +138,30 @@ Future<void> _startProcess(PortData portData) async {
         appConfiguration.database.port,
         appConfiguration.database.databaseName);
     final context = ManagedContext(dataModel, store);
+    if(isSuccess) {
+      final insertSizeQuery = Query<Dependency>(context)
+        ..values.domain = packageInfo.domain
+        ..values.module = packageInfo.module
+        ..values.version = packageInfo.version
+        ..values.lastUpdate = DateTime.now()
+        ..values.pingToken = token
+        ..values.isSuccess = isSuccess
+        ..values.sizeInBytes = size
+        ..values.lastAccess = DateTime.now();
+      await insertSizeQuery.insert();
+    }else{
+      final insertSizeQuery = Query<FailedDependency>(context)
+        ..values.domain = packageInfo.domain
+        ..values.module = packageInfo.module
+        ..values.version = packageInfo.version
+        ..values.lastUpdate = DateTime.now()
+        ..values.pingToken = token
+        ..values.isSuccess = isSuccess
+        ..values.sizeInBytes = size
+        ..values.lastAccess = DateTime.now();
 
-    final insertSizeQuery = Query<Dependency>(context)
-      ..values.domain = packageInfo.domain
-      ..values.module = packageInfo.module
-      ..values.version = packageInfo.version
-      ..values.lastUpdate = DateTime.now()
-      ..values.pingToken = token
-      ..values.isSuccess = isSuccess
-      ..values.sizeInBytes = size
-      ..values.lastAccess = DateTime.now();
-
-    await insertSizeQuery.insert();
+      await insertSizeQuery.insert();
+    }
   }
 
   Future<void> deleteTempProject() async {
@@ -171,7 +184,8 @@ Future<void> _startProcess(PortData portData) async {
   print("New Generated Artifact size $releaseArtifactSize");
   final diffInSize = releaseArtifactSize - FileDirs.releaseAppSize;
   print("Library Size $diffInSize");
-  await insertData(diffInSize, isSuccess: true);
+  await insertData(diffInSize, isSuccess: diffInSize > 0);
+
   logger.log(
       Level.INFO, "Package Size inserted for ${packageInfo.completePackage}");
   await deleteTempProject();
