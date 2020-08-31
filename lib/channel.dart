@@ -1,6 +1,7 @@
 import 'package:size_checker/AppConfiguration.dart';
 import 'package:size_checker/controller/GetDetailsController.dart';
 import 'package:size_checker/controller/PurgeAllController.dart';
+import 'package:size_checker/controller/StatController.dart';
 import 'package:worker_manager/worker_manager.dart';
 
 import 'controller/GetTokenStatusController.dart';
@@ -69,7 +70,9 @@ class SizeCheckerChannel extends ApplicationChannel {
     router
         .route("/purge/all")
         .link(() => PurgeAllController(context));
-
+    router
+      .route("/stat")
+      .link(() => StatController(context));
     return router;
   }
 }

@@ -23,7 +23,7 @@ class GetDetailsController extends ResourceController {
     try {
       final Map<String, dynamic> bodyMap = await request.body.decode();
       final String repo = bodyMap["repo"].toString();
-      final PackageInfo packageInfo = PackageInfo.from(packageName,repo);
+      final PackageInfo packageInfo = PackageInfo.from(packageName, repo);
 
       final Query<Dependency> query = Query<Dependency>(context)
         ..where((dep) => dep.domain).equalTo(packageInfo.domain)
@@ -41,7 +41,8 @@ class GetDetailsController extends ResourceController {
       final String token = Uuid().v4();
       logger.log(
           Level.INFO, "Starting background processing and returning token");
-      await _scheduleBackgroundJob(token, packageInfo.completePackage,packageInfo.repo);
+      await _scheduleBackgroundJob(
+          token, packageInfo.completePackage, packageInfo.repo);
       return Response.ok({"token": token});
     } catch (e) {
       logger.log(Level.SEVERE, e.toString());
@@ -51,15 +52,14 @@ class GetDetailsController extends ResourceController {
 
   Future<void> _updateLastAccessTime(Dependency dependency) async {
     final updateLastAccessQuery = Query<Dependency>(context)
-        ..values.lastAccess = DateTime.now()
-        ..where((dep) => dep.id)
-        .equalTo(dependency.id);
+      ..values.lastAccess = DateTime.now()
+      ..where((dep) => dep.id).equalTo(dependency.id);
     await updateLastAccessQuery.update();
   }
 
   Future<void> _scheduleBackgroundJob(
       String token, String completePackageName, String repo) async {
-    final PortData portData = PortData(completePackageName, token,repo);
+    final PortData portData = PortData(completePackageName, token, repo);
     Executor().execute(arg1: portData, fun1: _startProcess);
   }
 }
@@ -97,7 +97,8 @@ Future<void> _startProcess(PortData portData) async {
   projectGradleFileContent += projectGradleTailFile.readAsStringSync();
   projectGradleFile.writeAsStringSync(projectGradleFileContent);
 
-  logger.log(Level.INFO, "Generated Project Gradle File \n $projectGradleFileContent");
+  logger.log(
+      Level.INFO, "Generated Project Gradle File \n $projectGradleFileContent");
 
   //App Gradle
   final gradleHeadFile = File(fileDirs.gradleFileHeadPath);
@@ -138,7 +139,7 @@ Future<void> _startProcess(PortData portData) async {
         appConfiguration.database.port,
         appConfiguration.database.databaseName);
     final context = ManagedContext(dataModel, store);
-    if(isSuccess) {
+    if (isSuccess) {
       final insertSizeQuery = Query<Dependency>(context)
         ..values.domain = packageInfo.domain
         ..values.module = packageInfo.module
@@ -149,7 +150,7 @@ Future<void> _startProcess(PortData portData) async {
         ..values.sizeInBytes = size
         ..values.lastAccess = DateTime.now();
       await insertSizeQuery.insert();
-    }else{
+    } else {
       final insertSizeQuery = Query<FailedDependency>(context)
         ..values.domain = packageInfo.domain
         ..values.module = packageInfo.module

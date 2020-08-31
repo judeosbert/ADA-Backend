@@ -1,19 +1,9 @@
 import 'dart:async';
 import 'dart:io';
-import 'dart:isolate';
 
-import 'package:io/io.dart';
 import 'package:aqueduct/aqueduct.dart';
 import 'package:size_checker/models/Dependency.dart';
 import 'package:size_checker/models/FailedDependency.dart';
-import 'package:size_checker/models/PackageInfo.dart';
-import 'package:size_checker/models/PortData.dart';
-import 'package:size_checker/utils/constants.dart';
-import 'package:uuid/uuid.dart';
-import 'package:pedantic/pedantic.dart';
-import 'package:worker_manager/worker_manager.dart';
-
-import '../channel.dart';
 
 class GetTokenStatusController extends ResourceController {
   GetTokenStatusController(this.context);
@@ -26,7 +16,7 @@ class GetTokenStatusController extends ResourceController {
       final dep = await getStatus(token);
       return Response.ok(dep);
     } catch (e) {
-      logger.log(Level.SEVERE, e.toString());
+      logger.log(Level.FINE, "Package Not yet inserted");
       return Response.noContent();
     }
   }

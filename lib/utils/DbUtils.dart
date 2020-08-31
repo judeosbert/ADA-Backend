@@ -1,3 +1,6 @@
+import 'package:aqueduct/aqueduct.dart';
+import 'package:size_checker/models/Dependency.dart';
+
 class DbUtils{
   static TriValues<String> getPackageDetailsFrom(String completePackage){
     if(completePackage == null || completePackage.isEmpty){
@@ -11,6 +14,11 @@ class DbUtils{
     triValues.third = parts[2];
     return triValues;
 
+  }
+
+  static Future<int> getTotalPackageCount(ManagedContext context) async{
+      final query = Query<Dependency>(context);
+      return await query.reduce.count();
   }
 }
 
