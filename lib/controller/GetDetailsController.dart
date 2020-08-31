@@ -19,8 +19,9 @@ class GetDetailsController extends ResourceController {
 
   @Operation.post('packageName')
   Future<Response> getLibrarySize(
-      @Bind.path("packageName") String packageName) async {
+      @Bind.path("packageName") String impurePackageName) async {
     try {
+      final packageName = cleanPackageName(impurePackageName);
       final Map<String, dynamic> bodyMap = await request.body.decode();
       final String repo = bodyMap["repo"].toString();
       final PackageInfo packageInfo = PackageInfo.from(packageName, repo);
@@ -48,6 +49,15 @@ class GetDetailsController extends ResourceController {
       logger.log(Level.SEVERE, e.toString());
       return Response.serverError();
     }
+  }
+
+  String cleanPackageName(String packageInput) {
+    final keywordsToReplace = ["implementation", "api", "\"", "'", "compile"];
+    var packageName = packageInput;
+    keywordsToReplace.forEach((keyword) {
+      packageName = packageName.replaceAll(keyword, "");
+    });
+    return packageName;
   }
 
   Future<void> _updateLastAccessTime(Dependency dependency) async {
