@@ -52,7 +52,7 @@ class GetDetailsController extends ResourceController {
   }
 
   String cleanPackageName(String packageInput) {
-    final keywordsToReplace = ["implementation", "api", "\"", "'", "compile"];
+    final keywordsToReplace = ["implementation", "api", "\"", "'", "compile"," "];
     var packageName = packageInput;
     keywordsToReplace.forEach((keyword) {
       packageName = packageName.replaceAll(keyword, "");
