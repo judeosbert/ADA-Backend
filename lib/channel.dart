@@ -4,6 +4,7 @@ import 'package:size_checker/controller/PurgeAllController.dart';
 import 'package:size_checker/controller/StatController.dart';
 import 'package:worker_manager/worker_manager.dart';
 
+import 'controller/GetLogController.dart';
 import 'controller/GetTokenStatusController.dart';
 import 'controller/RecentSearchesController.dart';
 import 'size_checker.dart';
@@ -64,6 +65,9 @@ class SizeCheckerChannel extends ApplicationChannel {
     router
         .route("/status/:token")
         .link(() => GetTokenStatusController(context));
+    router
+      .route("/log/:token")
+      .link(()=> GetLogController(context));
     router
         .route("/recent")
         .link(() => RecentSearchesController(context));

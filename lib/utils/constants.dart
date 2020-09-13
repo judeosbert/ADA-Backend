@@ -11,6 +11,7 @@ class FileDirs {
     projectGradleFileHeadPath = tempBaseApplicationPath+"gradle_build_head";
     projectGradleFileTailPath = tempBaseApplicationPath+"gradle_build_tail";
 
+
   }
 
   static const int releaseAppSize = 1440979;
@@ -18,7 +19,7 @@ class FileDirs {
   static final String baseApplicationPath = demoAppPath+"MyApplication/";
   static final Directory baseApplicationDirectory = Directory(baseApplicationPath);
   static final String demoAppPath = _currentPath+"/lib/base_app/";
-
+  static final String buildLogPath = _currentPath+"/logs/build/";
 
   String tempBaseApplicationPath = "";
   String releaseArtifactPath = "";
@@ -28,5 +29,6 @@ class FileDirs {
   String projectGradleFilePath = "";
   String projectGradleFileHeadPath = "";
   String projectGradleFileTailPath = "";
+
 
 }

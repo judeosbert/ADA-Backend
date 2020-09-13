@@ -49,4 +49,6 @@ class _Dependency {
   DateTime lastAccess;
 
   bool isSuccess;
+
+  int buildTime;
 }
