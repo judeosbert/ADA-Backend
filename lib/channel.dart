@@ -7,6 +7,7 @@ import 'package:worker_manager/worker_manager.dart';
 import 'controller/GetLogController.dart';
 import 'controller/GetTokenStatusController.dart';
 import 'controller/RecentSearchesController.dart';
+import 'controller/SearchPackageController.dart';
 import 'size_checker.dart';
 
 /// This type initializes an application.
@@ -74,6 +75,9 @@ class SizeCheckerChannel extends ApplicationChannel {
     router
         .route("/purge/all")
         .link(() => PurgeAllController(context));
+    router
+        .route("/pkgSearch")
+        .link(() => SearchPackageController(context));
     router
       .route("/stat")
       .link(() => StatController(context));
