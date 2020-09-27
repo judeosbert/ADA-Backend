@@ -73,14 +73,18 @@ class SizeCheckerChannel extends ApplicationChannel {
         .route("/recent")
         .link(() => RecentSearchesController(context));
     router
-        .route("/purge/all")
-        .link(() => PurgeAllController(context));
-    router
         .route("/pkgSearch")
         .link(() => SearchPackageController(context));
     router
       .route("/stat")
       .link(() => StatController(context));
+
+    if (Platform.isMacOS) {
+      print("Purge point active");
+      router
+          .route("/purge/all")
+          .link(() => PurgeAllController(context));
+    }
     return router;
   }
 }

@@ -9,9 +9,10 @@ class StatController extends ResourceController {
   @Operation.get()
   Future<Response> getStat() async{
     try{
-        final count = await DbUtils.getTotalPackageCount(context);
+      final statData = await DbUtils.getTotalPackageCount(context);
         return Response.ok({
-          "indexCount":count
+          "indexCount": statData.first,
+          "avgBT": statData.second
         });
     }
     catch(e){
