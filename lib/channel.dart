@@ -43,7 +43,7 @@ class SizeCheckerChannel extends ApplicationChannel {
         config.database.password,
         config.database.host,
         config.database.port,
-        config.database.databaseName);
+        config.database.databaseName, useSSL: Platform.isLinux);
     context = ManagedContext(dataModel, store);
     await Executor().warmUp(log: true);
   }

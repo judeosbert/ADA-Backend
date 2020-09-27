@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:io/io.dart';
 import 'package:aqueduct/aqueduct.dart';
+import 'package:io/io.dart';
 import 'package:size_checker/AppConfiguration.dart';
 import 'package:size_checker/models/BuildStatus.dart';
 import 'package:size_checker/models/Dependency.dart';
@@ -90,7 +90,7 @@ ManagedContext _openDBConnection() {
       appConfiguration.database.password,
       appConfiguration.database.host,
       appConfiguration.database.port,
-      appConfiguration.database.databaseName);
+      appConfiguration.database.databaseName, useSSL: Platform.isLinux);
   final context = ManagedContext(dataModel, store);
   return context;
 }
